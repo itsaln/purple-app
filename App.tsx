@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 
+import { Colors, Gaps } from './shared/tokens'
 import { Input } from './shared/Input/Input'
 import { Button } from './shared/Button/Button'
-import { Colors, Gaps } from './shared/tokens'
 
 export default function App() {
 	return (
@@ -18,7 +18,7 @@ export default function App() {
 					<Input isPassword placeholder='Пароль' />
 					<Button text='Войти' />
 				</View>
-				<Text>Восстановить пароль</Text>
+				<Text style={{ color: Colors.link }}>Восстановить пароль</Text>
 			</View>
 		</View>
 	)
