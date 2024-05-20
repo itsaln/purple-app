@@ -12,9 +12,9 @@ import { Colors, Radius } from '../tokens'
 import { EyeClosedIcon, EyeOpenedIcon } from '../../assets/icons'
 
 export function Input({
-	                      isPassword,
-	                      ...rest
-                      }: TextInputProps & { isPassword?: boolean }) {
+	isPassword,
+	...props
+}: TextInputProps & { isPassword?: boolean }) {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
 	return (
@@ -23,7 +23,7 @@ export function Input({
 				style={styles.input}
 				secureTextEntry={isPassword && !isPasswordVisible}
 				placeholderTextColor={Colors.gray}
-				{...rest}
+				{...props}
 			/>
 
 			{isPassword && (
