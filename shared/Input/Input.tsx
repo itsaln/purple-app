@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.violetDark,
 		borderRadius: Radius.r10,
 		height: 58,
+		fontFamily: 'Fira Sans',
 		fontSize: 16,
 		color: Colors.gray,
 		paddingVertical: 0,

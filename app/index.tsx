@@ -32,7 +32,10 @@ export default function Login() {
 					<Input isPassword placeholder='Пароль' />
 					<Button text='Войти' onPress={alert} />
 				</View>
-				<Link href={'/restore'} style={{ color: Colors.link }}>
+				<Link
+					href={'/restore'}
+					style={{ fontFamily: 'Fira Sans', color: Colors.link }}
+				>
 					<Text>Восстановить пароль</Text>
 				</Link>
 			</View>
