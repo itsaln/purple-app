@@ -33,7 +33,7 @@ export default function Login() {
 					<Button text='Войти' onPress={alert} />
 				</View>
 				<CustomLink
-					href={'/restores'}
+					href={'/course/typescript'}
 					text='Восстановить пароль'
 				/>
 			</View>
