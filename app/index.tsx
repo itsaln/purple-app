@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { Link } from 'expo-router'
 
 import { Colors, Gaps } from '../shared/tokens'
 
 import { Input } from '../shared/Input/Input'
 import { Button } from '../shared/Button/Button'
 import { ErrorNotification } from '../shared/ErrorNotification/ErrorNotification'
+import { CustomLink } from '../shared/CustomLink/CustomLink'
 
 export default function Login() {
 	const [error, setError] = useState<string | undefined>()
@@ -32,12 +32,10 @@ export default function Login() {
 					<Input isPassword placeholder='Пароль' />
 					<Button text='Войти' onPress={alert} />
 				</View>
-				<Link
-					href={'/restore'}
-					style={{ fontFamily: 'Fira Sans', color: Colors.link }}
-				>
-					<Text>Восстановить пароль</Text>
-				</Link>
+				<CustomLink
+					href={'/restores'}
+					text='Восстановить пароль'
+				/>
 			</View>
 		</View>
 	)
