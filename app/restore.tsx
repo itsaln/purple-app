@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 import { Link } from 'expo-router'
 
-import { Colors } from '../shared/tokens'
+import { Colors } from '@/shared/tokens'
 
 export default function Restore() {
 	return (

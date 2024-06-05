@@ -1,7 +1,7 @@
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
-import { Colors, Fonts, Gaps } from '../shared/tokens'
-import { CustomLink } from '../shared/CustomLink/CustomLink'
+import { Colors, Fonts, Gaps } from '@/shared/tokens'
+import { CustomLink } from '@/shared/CustomLink/CustomLink'
 
 export default function UnmatchedPage() {
 	return (

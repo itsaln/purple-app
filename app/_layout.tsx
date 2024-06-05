@@ -4,7 +4,7 @@ import { Stack, SplashScreen } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
 
-import { Colors } from '../shared/tokens'
+import { Colors } from '@/shared/tokens'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -36,7 +36,7 @@ export default function RootLayout() {
 					}
 				}}
 			>
-				<Stack.Screen name='index' />
+				<Stack.Screen name='login' />
 				<Stack.Screen
 					name='restore'
 					options={{
