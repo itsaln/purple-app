@@ -48,18 +48,11 @@ export default function Login() {
 					resizeMode='contain'
 				/>
 				<View style={styles.form}>
-					<Input
-						placeholder='Email'
-						onChangeText={setEmail}
-					/>
-					<Input
-						isPassword
-						placeholder='Пароль'
-						onChangeText={setPassword}
-					/>
-					<Button text='Войти' onPress={onSubmit} />
+					<Input placeholder='Email' onChangeText={setEmail} />
+					<Input isPassword placeholder='Пароль' onChangeText={setPassword} />
+					<Button text='Войти' onPress={onSubmit} isLoading={isLoading} />
 				</View>
-				<CustomLink href={'/course/typescript'} text='Восстановить пароль' />
+				<CustomLink href={'/restore'} text='Восстановить пароль' />
 			</View>
 		</View>
 	)
