@@ -1,5 +1,6 @@
 export const Colors = {
 	black: '#16171D',
+	blackLight: '#1E1F29',
 	white: '#FAFAFA',
 	gray: '#AFB2BF',
 	violetDark: '#2E2D3D',
@@ -20,5 +21,6 @@ export const Radius = {
 
 export const Fonts = {
 	f16: 16,
-	f18: 18
+	f18: 18,
+	f20: 20
 }
