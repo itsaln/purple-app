@@ -7,7 +7,7 @@ import {
 	View
 } from 'react-native'
 
-import { Colors, Radius } from '../tokens'
+import { Colors, Fonts, Radius } from '../tokens'
 
 import { EyeClosedIcon, EyeOpenedIcon } from '../../assets/icons'
 
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.violetDark,
 		borderRadius: Radius.r10,
 		height: 58,
-		fontFamily: 'Fira Sans',
-		fontSize: 16,
+		fontFamily: Fonts.regular,
+		fontSize: Fonts.f16,
 		color: Colors.gray,
 		paddingVertical: 0,
 		paddingHorizontal: 24

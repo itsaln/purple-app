@@ -6,6 +6,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { API } from '../api/api'
 import { IAuthResponse, ILoginRequest } from './auth.interface'
 
+export interface IAuthState {
+	access_token: string | null
+	isLoading: boolean
+	error: string | null
+}
+
 const storage = createJSONStorage<IAuthState>(() => AsyncStorage)
 
 const INITIAL_STATE = {
@@ -55,9 +61,3 @@ export const loginAtom = atom(
 		}
 	}
 )
-
-export interface IAuthState {
-	access_token: string | null
-	isLoading: boolean
-	error: string | null
-}

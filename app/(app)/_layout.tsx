@@ -29,7 +29,7 @@ export default function AppLayout() {
 						return <MenuButton />
 					},
 					headerTitleStyle: {
-						fontFamily: 'Fira Sans',
+						fontFamily: Fonts.regular,
 						fontSize: Fonts.f20,
 						color: Colors.white
 					},

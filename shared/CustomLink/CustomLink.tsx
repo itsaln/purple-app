@@ -14,7 +14,7 @@ export function CustomLink({ text, ...props }: LinkProps & { text: string }) {
 
 const styles = StyleSheet.create({
 	link: {
-		fontFamily: 'Fira Sans',
+		fontFamily: Fonts.regular,
 		fontSize: Fonts.f18,
 		color: Colors.link
 	}

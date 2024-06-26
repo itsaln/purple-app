@@ -4,3 +4,7 @@ export interface IUser {
 	surname?: string
 	photo?: string
 }
+
+export interface IUserResponse {
+	profile: IUser
+}

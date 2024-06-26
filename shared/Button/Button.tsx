@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 		height: 58
 	},
 	text: {
-		fontFamily: 'Fira Sans',
+		fontFamily: Fonts.regular,
 		fontSize: Fonts.f18,
 		color: Colors.white
 	}

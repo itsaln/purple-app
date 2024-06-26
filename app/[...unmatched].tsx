@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 		height: 282
 	},
 	text: {
-		fontFamily: 'Fira Sans',
+		fontFamily: Fonts.regular,
 		fontSize: Fonts.f18,
 		color: Colors.white,
 		textAlign: 'center'

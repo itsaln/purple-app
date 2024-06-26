@@ -48,7 +48,11 @@ export default function Login() {
 					resizeMode='contain'
 				/>
 				<View style={styles.form}>
-					<Input placeholder='Email' onChangeText={setEmail} />
+					<Input
+						placeholder='Email'
+						onChangeText={setEmail}
+						autoCapitalize='none'
+					/>
 					<Input isPassword placeholder='Пароль' onChangeText={setPassword} />
 					<Button text='Войти' onPress={onSubmit} isLoading={isLoading} />
 				</View>
