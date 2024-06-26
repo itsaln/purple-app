@@ -12,9 +12,9 @@ export function UserMenu({ user }: { user: IUser | null }) {
 			{user.photo ? (
 				<Image style={styles.image} source={{ uri: user.photo }} />
 			) : (
-				<Image source={require('../../../../assets/images/avatar.png')} />
+				<Image style={styles.image} source={require('../../../../assets/images/avatar.png')} />
 			)}
-			<Text style={styles.name}>{user.name}</Text>
+			<Text style={styles.name}>{user.name} {user.surname}</Text>
 		</View>
 	)
 }
@@ -28,11 +28,16 @@ const styles = StyleSheet.create({
 	image: {
 		width: 60,
 		height: 60,
-		borderRadius: 30
+		borderRadius: 30,
+		borderWidth: 1,
+		borderStyle: 'solid',
+		borderColor: Colors.white,
+		objectFit: 'cover'
 	},
 	name: {
 		fontFamily: Fonts.regular,
 		fontSize: Fonts.f16,
-		color: Colors.white
+		color: Colors.white,
+		marginTop: 5
 	}
 })
