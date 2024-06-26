@@ -15,6 +15,15 @@ import { CloseDrawer } from '@/features/layout/ui/CloseDrawer/CloseDrawer'
 import { CustomLink } from '@/shared/CustomLink/CustomLink'
 import { Colors } from '@/shared/tokens'
 
+import CoursesIcon from '@/assets/menu/courses'
+import ProfileIcon from '@/assets/menu/profile'
+import { MenuItem } from '@/entities/layout/ui/MenuItem/MenuItem'
+
+const MENU = [
+	{ text: 'Курсы', icon: <CoursesIcon />, path: 'index' },
+	{ text: 'Профиль', icon: <ProfileIcon />, path: 'profile' }
+]
+
 export function CustomDrawer(props: DrawerContentComponentProps) {
 	const logout = useSetAtom(logoutAtom)
 	const [profile, loadProfile] = useAtom(loadProfileAtom)
@@ -31,6 +40,15 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
 			<View style={styles.content}>
 				<CloseDrawer {...props.navigation} />
 				<UserMenu user={profile.profile} />
+
+				{MENU.map((menuItem, index) => (
+					<MenuItem
+						key={`${menuItem.path}_${index}`}
+						{...menuItem}
+						drawer={props}
+						// navigation={props.navigation}
+					/>
+				))}
 			</View>
 			<View style={styles.footer}>
 				<CustomLink href={'/login'} onPress={() => logout()} text='Выход' />

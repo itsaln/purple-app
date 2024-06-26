@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
 	container: {
 		alignItems: 'center',
 		gap: Gaps.g8,
-		marginTop: 30
+		marginTop: 30,
+		marginBottom: 40
 	},
 	image: {
 		width: 60,
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
 	name: {
 		fontFamily: Fonts.regular,
 		fontSize: Fonts.f16,
-		color: Colors.white,
-		marginTop: 5
+		color: Colors.white
 	}
 })

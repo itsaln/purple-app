@@ -44,6 +44,12 @@ export default function AppLayout() {
 						title: 'Мои курсы'
 					}}
 				/>
+				<Drawer.Screen
+					name='profile'
+					options={{
+						title: 'Профиль'
+					}}
+				/>
 			</Drawer>
 		</GestureHandlerRootView>
 	)
