@@ -4,11 +4,12 @@ import { useAtomValue } from 'jotai'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { authAtom } from '@/entities/auth/model/auth.state'
-import { CustomDrawer } from '@/entities/layout/ui/CustomDrawer/CustomDrawer'
 
 import { MenuButton } from '@/features/layout/ui/MenuButton/MenuButton'
 
 import { Colors, Fonts } from '@/shared/tokens'
+
+import { CustomDrawer } from '@/widget/layout/ui/CustomDrawer/CustomDrawer'
 
 export default function AppLayout() {
 	const { access_token } = useAtomValue(authAtom)
