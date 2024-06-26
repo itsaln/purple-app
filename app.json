@@ -30,8 +30,8 @@
         "expo-font",
         {
           "fonts": [
-            "assets/fonts/FiraSans-Regular.ttf",
-            "assets/fonts/FiraSans-SemiBold.ttf"
+            "./assets/fonts/FiraSans-Regular.ttf",
+            "./assets/fonts/FiraSans-SemiBold.ttf"
           ]
         }
       ]
