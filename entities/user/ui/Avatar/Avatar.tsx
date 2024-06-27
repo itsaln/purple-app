@@ -7,7 +7,6 @@ export function Avatar({ image }: { image: string | null }) {
 				<Image style={styles.image} source={{ uri: image }} />
 			) : (
 				<Image
-					style={styles.image}
 					source={require('../../../../assets/images/avatar.png')}
 				/>
 			)}
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
 	image: {
 		width: 70,
 		height: 70,
-		borderRadius: 100,
+		borderRadius: 35,
 		objectFit: 'cover',
 		marginBottom: 5
 	}
