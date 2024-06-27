@@ -27,13 +27,11 @@ const styles = StyleSheet.create({
 		marginBottom: 40
 	},
 	image: {
-		width: 60,
-		height: 60,
-		borderRadius: 30,
-		borderWidth: 1,
-		borderStyle: 'solid',
-		borderColor: Colors.white,
-		objectFit: 'cover'
+		width: 70,
+		height: 70,
+		borderRadius: 100,
+		objectFit: 'cover',
+		marginBottom: 5
 	},
 	name: {
 		fontFamily: Fonts.regular,
