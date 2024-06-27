@@ -16,11 +16,34 @@ import { IUploadResponse } from '@/shared/ImageUploader/image-uploader.interface
 
 interface IImageUploader {
 	onUpload: (uri: string) => void
+	onError: (error: string) => void
 }
 
-export function ImageUploader({ onUpload }: IImageUploader) {
+export function ImageUploader({ onUpload, onError }: IImageUploader) {
 	const [libraryPermissions, requestLibraryPermission] =
 		useMediaLibraryPermissions()
+
+	const upload = async () => {
+		const isPermissionGranted = await verifyMediaPermissions()
+		if (!isPermissionGranted) {
+			onError('Недостаточно прав')
+			return
+		}
+
+		const asset = await pickImage()
+		if (!asset) {
+			onError('Не выбрано изображение')
+			return
+		}
+
+		const uploadedUrl = await uploadToServer(asset.uri, asset.fileName ?? '')
+		if (!uploadedUrl) {
+			onError('Не удалось загрузить изображение')
+			return
+		}
+
+		onUpload(uploadedUrl)
+	}
 
 	const verifyMediaPermissions = async () => {
 		if (libraryPermissions?.status === PermissionStatus.UNDETERMINED) {
@@ -37,10 +60,6 @@ export function ImageUploader({ onUpload }: IImageUploader) {
 	}
 
 	const pickImage = async () => {
-		const isPermissionGranted = await verifyMediaPermissions()
-
-		if (!isPermissionGranted) return
-
 		const result = await launchImageLibraryAsync({
 			mediaTypes: MediaTypeOptions.Images,
 			allowsEditing: true,
@@ -48,9 +67,9 @@ export function ImageUploader({ onUpload }: IImageUploader) {
 			quality: 0.5
 		})
 
-		if (!result.assets) return
+		if (!result.assets) return null
 
-		await uploadToServer(result.assets[0].uri, result.assets[0].fileName ?? '')
+		return result.assets[0]
 	}
 
 	const uploadToServer = async (uri: string, name: string) => {
@@ -73,14 +92,16 @@ export function ImageUploader({ onUpload }: IImageUploader) {
 				}
 			)
 
-			onUpload(data.urls.original)
+			return data.urls.original
 		} catch (error) {
 			if (error instanceof AxiosError) console.error(error)
+
+			return null
 		}
 	}
 
 	return (
-		<Pressable onPress={pickImage}>
+		<Pressable onPress={upload}>
 			<View style={styles.container}>
 				<UploadIcon />
 				<Text style={styles.text}>Загрузить изображение</Text>
