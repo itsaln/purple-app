@@ -4,6 +4,7 @@ import {
 	FlatList,
 	RefreshControl,
 	StyleSheet,
+	Text,
 	View
 } from 'react-native'
 import { useAtomValue, useSetAtom } from 'jotai'
@@ -27,7 +28,7 @@ export default function MyCourses() {
 	)
 
 	useEffect(() => {
-		let ignore = loadCourse()
+		let ignore = loadCourse('other')
 	}, [])
 
 	return (
@@ -39,13 +40,19 @@ export default function MyCourses() {
 		// </ScrollView>
 
 		<>
-			{isLoading && <ActivityIndicator style={styles.activity} size='large' color={Colors.primary} />}
+			{isLoading && (
+				<ActivityIndicator
+					style={styles.activity}
+					size='large'
+					color={Colors.primary}
+				/>
+			)}
 			{courses.length > 0 && (
 				<FlatList
 					refreshControl={
 						<RefreshControl
 							refreshing={isLoading}
-							onRefresh={loadCourse}
+							onRefresh={() => loadCourse('other')}
 							tintColor={Colors.primary}
 							titleColor={Colors.primary}
 						/>
@@ -55,6 +62,7 @@ export default function MyCourses() {
 					renderItem={renderCourse}
 				/>
 			)}
+			{error && <Text style={{ color: Colors.red }}>{error}</Text>}
 		</>
 	)
 }

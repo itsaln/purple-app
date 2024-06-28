@@ -22,7 +22,7 @@ export const loadCourseAtom = atom(
 	async (get) => {
 		return get(courseAtom)
 	},
-	async (get, set) => {
+	async (get, set, select: 'my' | 'other') => {
 		try {
 			const { access_token } = await get(authAtom)
 
@@ -32,7 +32,7 @@ export const loadCourseAtom = atom(
 				error: null
 			})
 
-			const { data } = await axios.get<ICourseResponse>(API.my, {
+			const { data } = await axios.get<ICourseResponse>(API.course, {
 				// params: {
 				// 	studentCourse: 'my'
 				// },
@@ -43,7 +43,7 @@ export const loadCourseAtom = atom(
 
 			set(courseAtom, {
 				isLoading: false,
-				courses: data.my,
+				courses: select === 'my' ? data.my : data.other,
 				error: null
 			})
 		} catch (error) {
