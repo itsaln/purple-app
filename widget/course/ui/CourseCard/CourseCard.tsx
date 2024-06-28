@@ -7,6 +7,7 @@ import { StudentCourseDescription } from '@/entities/course/model/course.model'
 import { Colors, Fonts, Gaps, Radius } from '@/shared/tokens'
 import { Chip } from '@/shared/Chip/Chip'
 import { Button } from '@/shared/Button/Button'
+import { CourseProgress } from '@/entities/course/ui/CourseProgress/CourseProgress'
 
 export function CourseCard({
 	image,
@@ -25,6 +26,7 @@ export function CourseCard({
 				height={200}
 			/>
 			<View style={styles.header}>
+				<CourseProgress totalLessons={120} passedLessons={40} />
 				<Text style={styles.title}>{shortTitle}</Text>
 				<View style={styles.chips}>
 					{courseOnDirection.length > 0 &&

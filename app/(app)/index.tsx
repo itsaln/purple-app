@@ -13,9 +13,10 @@ import {
 	courseAtom,
 	loadCourseAtom
 } from '@/entities/course/model/course.state'
-import { CourseCard } from '@/entities/course/ui/CourseCard/CourseCard'
 import { StudentCourseDescription } from '@/entities/course/model/course.model'
 import { Colors } from '@/shared/tokens'
+
+import { CourseCard } from '@/widget/course/ui/CourseCard/CourseCard'
 
 export default function MyCourses() {
 	const { isLoading, error, courses } = useAtomValue(courseAtom)
