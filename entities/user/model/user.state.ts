@@ -2,8 +2,8 @@ import { atom } from 'jotai'
 import axios, { AxiosError } from 'axios'
 
 import { authAtom } from '@/entities/auth/model/auth.state'
-import { API } from '@/entities/user/api/api'
 
+import { API } from '../api/api'
 import { IUser, IUserResponse } from './user.model'
 
 export interface IUserState {

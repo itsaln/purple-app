@@ -1,17 +1,24 @@
-import { useSetAtom } from 'jotai'
+import { useEffect } from 'react'
 import { Text, View } from 'react-native'
+import { useAtomValue, useSetAtom } from 'jotai'
 
-import { logoutAtom } from '@/entities/auth/model/auth.state'
-
-import { Button } from '@/shared/Button/Button'
+import {
+	courseAtom,
+	loadCourseAtom
+} from '@/entities/course/model/course.state'
 
 export default function MyCourses() {
-	const logout = useSetAtom(logoutAtom)
+	const { isLoading, error, courses } = useAtomValue(courseAtom)
+	const loadCourse = useSetAtom(loadCourseAtom)
+
+	useEffect(() => {
+		let ignore = loadCourse()
+	}, [])
 
 	return (
 		<View>
-			<Text>index</Text>
-			<Button text='Выход' onPress={logout} />
+			{courses.length > 0 &&
+				courses.map((c, i) => <Text key={`${c.id}_${i}`}>{c.title}</Text>)}
 		</View>
 	)
 }
