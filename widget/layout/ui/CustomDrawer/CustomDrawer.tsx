@@ -31,7 +31,7 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
 	const [profile, loadProfile] = useAtom(loadProfileAtom)
 
 	useEffect(() => {
-		loadProfile()
+		let ignore = loadProfile()
 	}, [])
 
 	return (
