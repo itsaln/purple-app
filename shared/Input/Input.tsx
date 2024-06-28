@@ -13,12 +13,13 @@ import { EyeClosedIcon, EyeOpenedIcon } from '../../assets/icons'
 
 export function Input({
 	isPassword,
+	style,
 	...props
 }: TextInputProps & { isPassword?: boolean }) {
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
 	return (
-		<View style={styles.field}>
+		<View style={style}>
 			<TextInput
 				style={styles.input}
 				secureTextEntry={isPassword && !isPasswordVisible}
@@ -39,9 +40,9 @@ export function Input({
 }
 
 const styles = StyleSheet.create({
-	field: {
-		position: 'relative'
-	},
+	// field: {
+	// 	position: 'relative'
+	// },
 	input: {
 		backgroundColor: Colors.violetDark,
 		borderRadius: Radius.r10,

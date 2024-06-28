@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useAtom } from 'jotai'
+import { isAvailableAsync, shareAsync } from 'expo-sharing'
 
 import { Avatar } from '@/entities/user/ui/Avatar/Avatar'
 import { updateProfileAtom } from '@/entities/user/model/user.state'
@@ -19,6 +20,16 @@ export default function Profile() {
 		await updateProfile({ photo: image })
 	}
 
+	const shareProfile = async () => {
+		const isSharingAvailable = await isAvailableAsync()
+
+		if (!isSharingAvailable) return
+
+		await shareAsync('https://purpleschool.ru', {
+			dialogTitle: 'Поделиться профелем'
+		})
+	}
+
 	useEffect(() => {
 		if (user && user.profile?.photo) setImage(user.profile?.photo)
 	}, [user])
@@ -30,6 +41,7 @@ export default function Profile() {
 				<ImageUploader onUpload={setImage} onError={(e) => console.log(e)} />
 			</View>
 			<Button text='Сохранить' onPress={submitProfile} />
+			<Button text='Поделиться' onPress={shareProfile} />
 		</View>
 	)
 }

@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
 import { router } from 'expo-router'
 import { useAtom } from 'jotai'
-import { StyleSheet, View, Image } from 'react-native'
+import { Dimensions, Image, StyleSheet, View } from 'react-native'
+import { Orientation } from 'expo-screen-orientation'
 
 import { loginAtom } from '@/entities/auth/model/auth.state'
 
 import { Colors, Gaps } from '@/shared/tokens'
+import { useScreenOrientation } from '@/shared/hooks'
 import { Input } from '@/shared/Input/Input'
 import { Button } from '@/shared/Button/Button'
 import { ErrorNotification } from '@/shared/ErrorNotification/ErrorNotification'
 import { CustomLink } from '@/shared/CustomLink/CustomLink'
 
 export default function Login() {
+	const orientation = useScreenOrientation()
+
 	const [localError, setLocalError] = useState<string | undefined>()
 	const [email, setEmail] = useState<string | undefined>()
 	const [password, setPassword] = useState<string | undefined>()
@@ -48,12 +52,36 @@ export default function Login() {
 					resizeMode='contain'
 				/>
 				<View style={styles.form}>
-					<Input
-						placeholder='Email'
-						onChangeText={setEmail}
-						autoCapitalize='none'
-					/>
-					<Input isPassword placeholder='Пароль' onChangeText={setPassword} />
+					<View
+						style={{
+							...styles.inputs,
+							flexDirection:
+								orientation === Orientation.PORTRAIT_UP ? 'column' : 'row'
+						}}
+					>
+						<Input
+							style={{
+								width:
+									orientation === Orientation.PORTRAIT_UP
+										? 'auto'
+										: Dimensions.get('window').width / 2 - 16 - 48
+							}}
+							placeholder='Email'
+							onChangeText={setEmail}
+							autoCapitalize='none'
+						/>
+						<Input
+							style={{
+								width:
+									orientation === Orientation.PORTRAIT_UP
+										? 'auto'
+										: Dimensions.get('window').width / 2 - 16 - 48
+							}}
+							isPassword
+							placeholder='Пароль'
+							onChangeText={setPassword}
+						/>
+					</View>
 					<Button text='Войти' onPress={onSubmit} isLoading={isLoading} />
 				</View>
 				<CustomLink href={'/restore'} text='Восстановить пароль' />
@@ -78,6 +106,9 @@ const styles = StyleSheet.create({
 	},
 	form: {
 		alignSelf: 'stretch',
+		gap: Gaps.g16
+	},
+	inputs: {
 		gap: Gaps.g16
 	}
 })
