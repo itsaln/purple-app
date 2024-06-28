@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react'
 import { router } from 'expo-router'
 import { useAtom } from 'jotai'
-import { Dimensions, Image, StyleSheet, View } from 'react-native'
+import {
+	Dimensions,
+	Image,
+	KeyboardAvoidingView,
+	Platform,
+	StyleSheet,
+	View
+} from 'react-native'
 import { Orientation } from 'expo-screen-orientation'
 
 import { loginAtom } from '@/entities/auth/model/auth.state'
@@ -45,7 +52,10 @@ export default function Login() {
 	return (
 		<View style={styles.container}>
 			<ErrorNotification error={localError} />
-			<View style={styles.content}>
+			<KeyboardAvoidingView
+				behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+				style={styles.content}
+			>
 				<Image
 					source={require('../assets/logo.png')}
 					style={styles.logo}
@@ -85,7 +95,7 @@ export default function Login() {
 					<Button text='Войти' onPress={onSubmit} isLoading={isLoading} />
 				</View>
 				<CustomLink href={'/restore'} text='Восстановить пароль' />
-			</View>
+			</KeyboardAvoidingView>
 		</View>
 	)
 }
