@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Linking, StyleSheet, Text, View } from 'react-native'
 
 import { StudentCourseDescription } from '@/entities/course/model/course.model'
 
@@ -9,7 +9,8 @@ import { Button } from '@/shared/Button/Button'
 export function CourseCard({
 	image,
 	shortTitle,
-	courseOnDirection
+	courseOnDirection,
+	alias
 }: StudentCourseDescription) {
 	return (
 		<View style={styles.card}>
@@ -30,7 +31,12 @@ export function CourseCard({
 				</View>
 			</View>
 			<View style={styles.footer}>
-				<Button text='Купить' />
+				<Button
+					text='Купить'
+					onPress={() =>
+						Linking.openURL(`https://purpleschool.ru/course/${alias}`)
+					}
+				/>
 			</View>
 		</View>
 	)
