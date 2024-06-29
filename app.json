@@ -4,13 +4,15 @@
     "slug": "purple-app",
     "description": "Приложение школы PurpleSchool для прохождения курсов",
     "version": "1.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "icon": "./assets/icon.png",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "backgroundColor": "#16171D",
     "primaryColor": "#6C38CC",
-    "extra": { "eas": { "projectId": "ae4781d2-f35d-4668-8547-3cb9a20883f1" } },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -26,7 +28,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "ru.purpleschool.purpleapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -56,6 +62,15 @@
         }
       ]
     ],
-    "scheme": "purpleschool"
+    "scheme": "purpleschool",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ae4781d2-f35d-4668-8547-3cb9a20883f1"
+      }
+    },
+    "owner": "itsaln"
   }
 }
