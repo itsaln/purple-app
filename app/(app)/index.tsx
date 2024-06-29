@@ -9,7 +9,6 @@ import {
 } from 'react-native'
 import { useAtomValue, useSetAtom } from 'jotai'
 import {
-	scheduleNotificationAsync,
 	getPermissionsAsync,
 	requestPermissionsAsync,
 	IosAuthorizationStatus,
