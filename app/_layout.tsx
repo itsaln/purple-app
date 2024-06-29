@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useFonts } from 'expo-font'
 
 import { Colors } from '@/shared/tokens'
+import { Notification } from '@/shared/Notification/Notification'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -26,6 +27,7 @@ export default function RootLayout() {
 
 	return (
 		<SafeAreaProvider>
+			<Notification />
 			<StatusBar style='light' />
 			<Stack
 				screenOptions={{

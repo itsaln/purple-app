@@ -8,12 +8,22 @@ import {
 	View
 } from 'react-native'
 import { useAtomValue, useSetAtom } from 'jotai'
+import {
+	scheduleNotificationAsync,
+	getPermissionsAsync,
+	requestPermissionsAsync,
+	IosAuthorizationStatus,
+	getExpoPushTokenAsync
+} from 'expo-notifications'
+import { isDevice } from 'expo-device'
+import Constants from 'expo-constants'
 
 import {
 	courseAtom,
 	loadCourseAtom
 } from '@/entities/course/model/course.state'
 import { StudentCourseDescription } from '@/entities/course/model/course.model'
+import { Button } from '@/shared/Button/Button'
 import { Colors } from '@/shared/tokens'
 
 import { CourseCard } from '@/widget/course/ui/CourseCard/CourseCard'
@@ -27,6 +37,49 @@ export default function MyCourses() {
 			<CourseCard {...item} />
 		</View>
 	)
+
+	const allowsNotification = async () => {
+		const settings = await getPermissionsAsync()
+
+		return (
+			settings.granted ||
+			settings.ios?.status === IosAuthorizationStatus.PROVISIONAL
+		)
+	}
+
+	const requestPermissions = async () => {
+		return requestPermissionsAsync({
+			ios: {
+				allowAlert: true,
+				allowBadge: true,
+				allowSound: true
+			}
+		})
+	}
+
+	const scheduleNotification = async () => {
+		const granted = await allowsNotification()
+		if (!granted) await requestPermissions()
+
+		if (isDevice) {
+			const token = await getExpoPushTokenAsync({
+				projectId: Constants.expoConfig?.extra?.eas.projectId
+			})
+
+			console.log(token)
+		}
+
+		// await scheduleNotificationAsync({
+		// 	content: {
+		// 		title: 'Новый курс TypeScript',
+		// 		body: 'Начни учиться уже сейчас!',
+		// 		data: { alias: 'typescript' }
+		// 	},
+		// 	trigger: {
+		// 		seconds: 5
+		// 	}
+		// })
+	}
 
 	useEffect(() => {
 		let ignore = loadCourse('other')
@@ -48,6 +101,7 @@ export default function MyCourses() {
 					color={Colors.primary}
 				/>
 			)}
+			<Button text='Напомнить' onPress={scheduleNotification} />
 			{courses.length > 0 && (
 				<FlatList
 					refreshControl={
