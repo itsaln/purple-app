@@ -38,8 +38,6 @@ export default function Login() {
 			return
 		}
 
-		console.log(email, password)
-
 		login({ email, password })
 	}
 
