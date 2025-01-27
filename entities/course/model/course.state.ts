@@ -24,7 +24,7 @@ export const loadCourseAtom = atom(
 	},
 	async (get, set, select: 'my' | 'other') => {
 		try {
-			const { access_token } = await get(authAtom)
+			const { accessToken } = await get(authAtom)
 
 			set(courseAtom, {
 				isLoading: true,
@@ -37,7 +37,7 @@ export const loadCourseAtom = atom(
 				// 	studentCourse: 'my'
 				// },
 				headers: {
-					Authorization: `Bearer ${access_token}`
+					Authorization: `Bearer ${accessToken}`
 				}
 			})
 

@@ -12,9 +12,9 @@ import { Colors, Fonts } from '@/shared/tokens'
 import { CustomDrawer } from '@/widget/layout/ui/CustomDrawer/CustomDrawer'
 
 export default function AppLayout() {
-	const { access_token } = useAtomValue(authAtom)
+	const { accessToken } = useAtomValue(authAtom)
 
-	if (!access_token) return <Redirect href='/login' />
+	if (!accessToken) return <Redirect href='/login' />
 
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>

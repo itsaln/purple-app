@@ -1,5 +1,5 @@
 export interface IAuthResponse {
-	access_token: string
+	accessToken: string
 }
 
 export interface ILoginRequest {

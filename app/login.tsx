@@ -26,7 +26,7 @@ export default function Login() {
 	const [localError, setLocalError] = useState<string | undefined>()
 	const [email, setEmail] = useState<string | undefined>()
 	const [password, setPassword] = useState<string | undefined>()
-	const [{ access_token, isLoading, error }, login] = useAtom(loginAtom)
+	const [{ accessToken, isLoading, error }, login] = useAtom(loginAtom)
 
 	const onSubmit = () => {
 		if (!email) {
@@ -38,6 +38,8 @@ export default function Login() {
 			return
 		}
 
+		console.log(email, password)
+
 		login({ email, password })
 	}
 
@@ -46,8 +48,8 @@ export default function Login() {
 	}, [error])
 
 	useEffect(() => {
-		if (access_token) router.replace('/(app)')
-	}, [access_token])
+		if (accessToken) router.replace('/(app)')
+	}, [accessToken])
 
 	return (
 		<View style={styles.container}>

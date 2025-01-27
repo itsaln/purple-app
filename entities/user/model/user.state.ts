@@ -24,7 +24,7 @@ export const updateProfileAtom = atom(
 	},
 	async (get, set, { photo }: { photo: string }) => {
 		try {
-			const { access_token } = await get(authAtom)
+			const { accessToken } = await get(authAtom)
 			const { data } = await axios.patch<IUser>(
 				API.profile,
 				{
@@ -32,7 +32,7 @@ export const updateProfileAtom = atom(
 				},
 				{
 					headers: {
-						Authorization: `Bearer ${access_token}`
+						Authorization: `Bearer ${accessToken}`
 					}
 				}
 			)
@@ -59,7 +59,7 @@ export const loadProfileAtom = atom(
 		return get(profileAtom)
 	},
 	async (get, set) => {
-		const { access_token } = await get(authAtom)
+		const { accessToken } = await get(authAtom)
 		set(profileAtom, {
 			isLoading: true,
 			profile: null,
@@ -69,7 +69,7 @@ export const loadProfileAtom = atom(
 		try {
 			const { data } = await axios.get<IUserResponse>(API.profile, {
 				headers: {
-					Authorization: `Bearer ${access_token}`
+					Authorization: `Bearer ${accessToken}`
 				}
 			})
 

@@ -7,7 +7,7 @@ import { API } from '../api/api'
 import { IAuthResponse, ILoginRequest } from './auth.interface'
 
 export interface IAuthState {
-	access_token: string | null
+	accessToken: string | null
 	isLoading: boolean
 	error: string | null
 }
@@ -15,7 +15,7 @@ export interface IAuthState {
 const storage = createJSONStorage<IAuthState>(() => AsyncStorage)
 
 const INITIAL_STATE = {
-	access_token: null,
+	accessToken: null,
 	isLoading: false,
 	error: null
 }
@@ -35,7 +35,7 @@ export const loginAtom = atom(
 	async (_get, set, { email, password }: ILoginRequest) => {
 		set(authAtom, {
 			isLoading: true,
-			access_token: null,
+			accessToken: null,
 			error: null
 		})
 
@@ -47,14 +47,14 @@ export const loginAtom = atom(
 
 			set(authAtom, {
 				isLoading: false,
-				access_token: data.access_token,
+				accessToken: data.accessToken,
 				error: null
 			})
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				set(authAtom, {
 					isLoading: false,
-					access_token: null,
+					accessToken: null,
 					error: error.response?.data.message
 				})
 			}

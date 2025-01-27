@@ -35,6 +35,8 @@ yarn-error.*
 *.tsbuildinfo
 
 # custom
+.vscode/
 .idea/
 .env
 ios/
+android/
